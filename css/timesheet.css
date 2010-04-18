@@ -1,0 +1,551 @@
+@CHARSET "ISO-8859-1";
+/*
+window: 805x1440
+work area: 805x1422
+*/
+
+html,body,form {
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+	height: 805px;
+	width: 1422px;
+}
+
+/* wrapper to align center of page */
+#wrapper {
+/*we need to tell the browser the size of the warpper div*/
+width:1422px;
+height:805px;
+/*aligns the page to the center horizontal (x)*/
+margin-left:auto;
+margin-right:auto;
+/*aligns the age to the center vertical (y)*/
+position: absolute;
+top: 50%;
+left: 50%;
+/*resets the offset (should be half the width and height*/
+margin-top:-403px;
+margin-left:-711px;
+}
+
+html * {
+  font-family: Arial, Verdana, Tahoma, Helvetica;
+  font-size: 8pt;
+}
+
+/* Page */
+h1{
+	text-align:left;
+	color:#6FA5FD;
+	font-size:22px;
+	font-weight:700;
+	border-bottom:1px dotted #D3D3D3;
+	padding-bottom:2px;
+	margin-bottom:20px;
+}
+
+#menu {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 70px;
+	width: 1422px;
+	background: #660000; 
+}
+
+#menuitems {
+	display: block;
+	position: absolute;
+	top: 0px;
+	left: 50px;
+	height: 35px;
+	width: 1372px;
+}
+
+#menuitems a {
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	border: 1px solid grey;
+	font-size: 11pt;
+	text-decoration: none;
+	display: block;
+	height: 20px;
+	width: 100px;
+	cursor: hand;
+	cursor: pointer;
+}
+
+#menuitems a:link {
+	color: #ffffff;
+}
+
+#menuitems a:visited {
+	color: #2C2E22;
+}
+
+#menuitems a:hover {
+	background:  #F3F3F3;
+	color: #2C2E22;
+}
+
+#menuitems a:active {
+	color: #2C2E22;
+}
+
+#signout {
+	position: absolute;
+	color: white;
+	font-weight: normal;
+	text-align: right;
+	font-size: 10pt;
+	top: 40px;
+	left: 690px;
+	height: 30px;
+	width: 720px;
+	background: #660000;
+}
+
+#signout a:link {
+	color: #ffffff;
+	font-size: 10pt;
+}
+
+#signout a:visited {
+	color: #2C2E22;
+}
+
+#signout a:hover {
+	background:  #F3F3F3;
+	color: #2C2E22;
+}
+
+#signout a:active {
+	color: #2C2E22;
+}
+
+#sidemenu {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 805px;
+	width: 50px;
+	background: #660000;
+}
+
+#logo {
+	position: absolute;
+	bottom: 55px;
+	left: 5px;
+	height: 185px;
+	width: 35px;
+	background: #660000;
+	z-index: 5;
+}
+
+#tools {
+	position: absolute;
+	top: 80px;
+	left: 8px;
+	height: 120px;
+	width: 40px;
+	background: #660000;
+	z-index: 5;
+}
+
+#tools img {
+	height: 32px; 
+	width: 32px;
+	cursor: hand;
+	cursor: pointer;
+	border: 1px solid grey; 
+}
+
+#control {
+	position: absolute;
+	padding-left: 10px;
+	padding-top: 4px;
+	top: 35px;
+	left: 50px;
+	height: 35px;
+	width: 1372px;
+	z-index: 5;
+}
+
+/* Main area page */
+#main {
+	position: absolute;
+	top: 70px;
+	left: 50px;
+	height: 709px;
+	width: 1372px;
+}
+
+#table {
+	top: 1px;
+	left: 1px;
+	height: 534px;
+	width: 754px;
+	border: 3px solid grey;	
+}
+
+#signin_lite {
+	top: 535px;
+	left: 1px;
+	height: 30px;
+	width: 754px;
+	background: #660000;
+	border: 3px solid grey;
+}
+
+#total {
+	display: block;
+	overflow: auto;
+	top: 565px;
+	left: 1px;
+	height: 135px;
+	width: 755px;
+	/*border: 1px solid red;*/	
+}
+
+#promo {
+	position: absolute;
+	padding: 0px;
+	top: 0px;
+	left: 755px;
+	height: 200px;
+	width: 617px;
+	background: grey;
+	border: 2px solid black;
+}
+
+#spec {
+	position: absolute;
+	top: 200px;
+	left: 755px;
+	height: 500px;
+	width: 617px;
+	/*border: 1px solid blue;*/
+}
+
+/* Progress bar */
+#loadingZone {
+	display: hide;
+	position: absolute;
+	top: 100px;
+	left: 480px;
+	height: 60px;
+	width: 176px;
+	z-index: 15;
+	color: white;
+	text-align: center;
+	padding-top: 15px;
+	font-weight: bold;
+	font-size: 20px;
+	background: #000000;
+	filter:alpha(opacity=50);
+}
+
+input.inputDate {
+	border: 1px solid #999;
+	padding: 2px;
+	border-bottom-color: #ddd;
+	border-right-color: #ddd;
+	width: 75px;
+}
+
+/* Footer */
+#footer {
+	position: absolute;
+	top: 779px;
+	left: 50px;
+	width: 1372px;
+	height: 26px;
+	background: #cc9966;
+	z-index:10;
+}
+
+#footeritem {
+	float: right;
+	position: absolute;
+	bottom: -3px;
+	left: 150px;
+	width: 500px;
+	height: 20px;
+	z-index:11;
+}
+
+#footer a {
+	padding-left: 3px;
+	padding-right: 3px;
+	border: 1px solid grey;
+	font-size: 10pt;
+	text-decoration: none;
+	display: block;
+	height: 20px;
+	width: 68px;
+	cursor: hand;
+	cursor: pointer;
+}
+
+#footer a:link {
+	color: #000000;
+}
+
+#footer a:visited {
+	color: #2C2E22;
+}
+
+#footer a:hover {
+	background:  #F3F3F3;
+	color: #2C2E22;
+}
+
+#footer a:active {
+	color: #2C2E22;
+}
+
+/* Footer menu */
+
+#footermenu {
+	display: none;
+	position: absolute;
+	bottom: 20px;
+	height: 160px;
+	width: 120px;
+	background: #ffffff;
+	border: 1px solid black;
+}
+
+#footermenu a {
+	padding-left: 3px;
+	padding-right: 3px;
+	font-size: 10pt;
+	text-decoration: none;
+	border: 0;
+	height: 20px;
+	width: 120px;
+	cursor: hand;
+	cursor: pointer;
+}
+
+#footermenu h3 {
+	padding-left: 3px;
+	padding-right: 3px;
+	font-size: 10pt;
+	background: #cc9966;
+	text-decoration: bold;
+	border: 0;
+	height: 20px;
+	width: 120px;
+}
+
+#footer a:hover {
+	background:  #CCCCCC;
+	color: #2C2E22;
+}
+
+#backgroundPopup{
+	display: none;
+	position: fixed;
+	_position: absolute; /* hack for internet explorer 6*/
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	background: #000000;
+	border: 1px solid #cecece;
+	filter: alpha(opacity=50);
+}
+
+#addStaffPopupContact{
+	display: none;
+	position: fixed;
+	_position: absolute; /* hack for internet explorer 6*/
+	top: 140px;
+	left: 3px;
+	height: 470px;
+	width: 1250px;
+	background: #666;
+	border: 2px solid #cecece;
+	z-index: 2;
+	padding: 12px;
+	font-size: 13px;
+}
+
+#addStaffPopupContent {
+	position:relative;
+	_position:relative;
+	top:0.5%;
+	left:2%;
+	height:99%;
+	width:96%;
+  	cursor: hand;
+  	cursor: pointer;
+  	color: white;
+}
+
+#addStaffPopupContactClose{
+	font-size:14px;
+	line-height:14px;
+	right:6px;
+	top:4px;
+	position:absolute;
+	color:#6fa5fd;
+	font-weight:700;
+	cursor: hand;
+	cursor: pointer;
+	display:block;
+}
+
+#editStaffPopupContact{
+	display: none;
+	position: fixed;
+	_position: absolute; /* hack for internet explorer 6*/
+	top: 140px;
+	left: 3px;
+	height: 470px;
+	width: 1250px;
+	background: #666;
+	border: 2px solid #cecece;
+	z-index: 2;
+	padding: 12px;
+	font-size: 13px;
+}
+
+#editStaffPopupContent {
+	position:relative;
+	_position:relative;
+	top:0.5%;
+	left:2%;
+	height:99%;
+	width:96%;
+  	cursor: hand;
+  	cursor: pointer;
+  	color: white;
+}
+
+#editStaffPopupContactClose{
+	font-size:14px;
+	line-height:14px;
+	right:6px;
+	top:4px;
+	position:absolute;
+	color:#6fa5fd;
+	font-weight:700;
+	cursor: hand;
+	cursor: pointer;
+	display:block;
+}
+
+
+h3.info {
+	color:#6FA5FD;
+	border-bottom:1px dotted #D3D3D3;
+	padding:0;
+	margin:0;
+}
+
+#new_scan {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 80px;
+	width: 1250px;
+}
+
+#new_spec_info {
+	position: absolute;
+	top: 30px;
+	left: 0px;
+	height: 80px;
+	width: 1250px;
+	/*border: 1px solid red;*/
+}
+
+#new_spec_prime_contact {
+	position: absolute;
+	top: 110px;
+	left: 0px;
+	height: 210px;
+	width: 417px;
+	/*border: 1px solid red;*/
+}
+
+#new_spec_second_contact {
+	position: absolute;
+	top: 110px;
+	left: 417.5px;
+	height: 210px;
+	width: 417px;
+	/*border: 1px solid red;*/
+}
+
+#new_spec_backup_contact {
+	position: absolute;
+	top: 110px;
+	left: 835px;
+	height: 210px;
+	width: 417px;
+	/*border: 1px solid red;*/
+}
+
+#new_spec_control {
+	position: absolute;
+	top: 330px;
+	left: 500px;
+	height: 50px;
+	width: 250px;
+	/*border: 1px solid red;*/
+}
+
+/* located in demo.css and creates a little calendar icon
+ * instead of a text link for "Choose date"
+ */
+a.dp-choose-date {
+	width: 16px;
+	height: 16px;
+	padding: 0;
+	margin: 5px 3px 0;
+	text-indent: -2000px;
+	overflow: hidden;
+	background: url(../images/calendar.png) no-repeat; 
+}
+a.dp-choose-date.dp-disabled {
+	background-position: 0 -20px;
+	cursor: default;
+}
+/* makes the input field shorter once the date picker code
+ * has run (to allow space for the calendar icon
+ */
+input.dp-applied {
+	width: 140px;
+}
+
+/* Debug */
+#debug {
+	position: absolute;
+	display: none;
+	z-index: 1;
+	top: 70px;
+	left: 50px;
+	height: 400px;
+	width: 380px;
+	background: #000000;
+	border: 3px solid #ffffff;
+	filter: alpha(opacity=80);
+}
+
+#returnMessage {
+	position: absolute;
+	display: none;
+	overflow: none;
+	top: 375px;
+	left: 450px;
+	height: 55px;
+	width: 500px;
+	z-index: 5;
+	border: 3px solid black;
+}

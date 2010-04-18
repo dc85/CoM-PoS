@@ -1,0 +1,55 @@
+@CHARSET "ISO-8859-1";
+
+html * {
+  font-family: Arial, Verdana, Tahoma, Helvetica;
+  font-size: 8pt;
+}
+
+/* this is the secret to */
+/* controlling form height */
+
+html,body,form {
+  margin:0px;
+  padding:0px;
+  height:100%;
+  width:100%;
+}
+
+.cellTitle {
+  border-bottom:1px solid black;
+  border-left:1px solid black;
+  background:#e0ffe0;
+  font-weight: bold;
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+tr.cell0,tr.cell1,tr.selectcell {
+  cursor: hand;
+  cursor: pointer;
+}
+
+tr.cell0 td, tr.cell1 td, tr.selectcell td {
+  /*border-left:1px solid black;*/
+  padding-left:0.25em;
+  padding-right:0.25em;
+  vertical-align:top;
+}
+
+/* the odd & even row contrasting colors */
+
+tr.scell0 { background:#eff1f1; }
+tr.scell1 { background:#f8f8f8; }
+tr.tcell0 { background:#ff3300; }
+tr.tcell1 { background:#ffff00; }
+
+tr.selectcell,.formdiv,body {
+  background-color:#ffffe0;
+}
+
+.radiobutton,.checkbox {
+  border:0;
+}

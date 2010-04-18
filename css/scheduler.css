@@ -1,0 +1,322 @@
+<link href="../jquery.tablesorter/themes/blue/style.css" rel="stylesheet" type="text/css" />@CHARSET "ISO-8859-1";
+/*
+window: 805x1440
+work area: 805x1422
+*/
+
+html,body,form {
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+	height: 805px;
+	width: 1422px;
+}
+
+html * {
+  font-family: Arial, Verdana, Tahoma, Helvetica;
+  font-size: 8pt;
+}
+
+/* Page */
+h1{
+	text-align:left;
+	color:#6FA5FD;
+	font-size:22px;
+	font-weight:700;
+	border-bottom:1px dotted #D3D3D3;
+	padding-bottom:2px;
+	margin-bottom:20px;
+}
+
+#menu {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 70px;
+	width: 1422px;
+	background: #660000; 
+}
+
+#menuitems {
+	display: block;
+	position: absolute;
+	top: 0px;
+	left: 50px;
+	height: 35px;
+	width: 1372px;
+}
+
+#menuitems a {
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	border: 1px solid grey;
+	font-size: 11pt;
+	text-decoration: none;
+	display: block;
+	height: 20px;
+	width: 100px;
+	cursor: hand;
+	cursor: pointer;
+}
+
+#menuitems a:link {
+	color: #ffffff;
+}
+
+#menuitems a:visited {
+	color: #2C2E22;
+}
+
+#menuitems a:hover {
+	background:  #F3F3F3;
+	color: #2C2E22;
+}
+
+#menuitems a:active {
+	color: #2C2E22;
+}
+
+#signout {
+	position: absolute;
+	color: white;
+	font-weight: normal;
+	text-align: right;
+	font-size: 10pt;
+	top: 40px;
+	left: 690px;
+	height: 30px;
+	width: 720px;
+	background: #660000;
+}
+
+#signout a:link {
+	color: #ffffff;
+	font-size: 10pt;
+}
+
+#signout a:visited {
+	color: #2C2E22;
+}
+
+#signout a:hover {
+	background:  #F3F3F3;
+	color: #2C2E22;
+}
+
+#signout a:active {
+	color: #2C2E22;
+}
+
+#sidemenu {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 805px;
+	width: 50px;
+	background: #660000; 
+}
+
+#logo {
+	position: absolute;
+	bottom: 55px;
+	left: 5px;
+	height: 185px;
+	width: 35px;
+	background: #660000;
+	z-index: 5;
+}
+
+#tools {
+	position: absolute;
+	top: 80px;
+	left: 8px;
+	height: 120px;
+	width: 40px;
+	background: #660000;
+	z-index: 5;
+}
+
+#tools img {
+	height: 32px; 
+	width: 32px;
+	cursor: hand;
+	cursor: pointer;
+	border: 1px solid grey; 
+}
+
+#hiddenframe {
+	position: absolute;
+	display: none;
+	top: 0px;
+	right: 0px;
+	height: 200px;
+	width: 200px;
+	background: #ffffff;
+	z-index: 15;
+}
+
+#control {
+	position: absolute;
+	padding-top: 3px;
+	top: 35px;
+	left: 50px;
+	height: 35px;
+	width: 1372px;
+	z-index: 5;
+}
+
+b.control{
+	color: #ffffff;
+}
+
+/* Main area page */
+#main {
+	position: relative;
+	top: 70px;
+	left: 50px;
+	height: 709px;
+	width: 1372px;
+	/*border: 1px solid red;*/
+}
+
+/* Progress bar */
+#loadingZone {
+	display: hide;
+	position: absolute;
+	top: 320px;
+	left: 540px;
+	height: 60px;
+	width: 176px;
+	z-index: 15;
+	color: white;
+	text-align: center;
+	padding-top: 15px;
+	font-weight: bold;
+	font-size: 20px;
+	background: #000000;
+	filter:alpha(opacity=50);
+}
+
+#queryZone {
+	display: hide;
+	position: absolute;
+	top: 320px;
+	left: 540px;
+	height: 60px;
+	width: 176px;
+	z-index: 14;
+	color: white;
+	text-align: center;
+	padding-top: 15px;
+	font-weight: bold;
+	font-size: 20px;
+	background: #000000;
+	filter:alpha(opacity=50);
+}
+
+
+/* Footer */
+#footer {
+	position: absolute;
+	top: 779px;
+	left: 50px;
+	width: 1372px;
+	height: 26px;
+	background: #cc9966;
+	z-index:10;
+}
+
+#footeritem {
+	float: right;
+	position: absolute;
+	bottom: -3px;
+	left: 150px;
+	width: 500px;
+	height: 20px;
+	z-index:11;
+}
+
+#footer a {
+	padding-left: 3px;
+	padding-right: 3px;
+	border: 1px solid grey;
+	font-size: 10pt;
+	text-decoration: none;
+	display: block;
+	height: 20px;
+	width: 80px;
+	cursor: hand;
+	cursor: pointer;
+}
+
+#footer a:link {
+	color: #000000;
+}
+
+#footer a:visited {
+	color: #2C2E22;
+}
+
+#footer a:hover {
+	background:  #F3F3F3;
+	color: #2C2E22;
+}
+
+#footer a:active {
+	color: #2C2E22;
+}
+
+/* Footer menu */
+
+#footermenu {
+	display: none;
+	position: absolute;
+	bottom: 20px;
+	height: 160px;
+	width: 120px;
+	background: #ffffff;
+	border: 1px solid black;
+}
+
+#footermenu a {
+	padding-left: 3px;
+	padding-right: 3px;
+	font-size: 10pt;
+	text-decoration: none;
+	border: 0;
+	height: 20px;
+	width: 120px;
+	cursor: hand;
+	cursor: pointer;
+}
+
+#footermenu h3 {
+	padding-left: 3px;
+	padding-right: 3px;
+	font-size: 10pt;
+	background: #cc9966;
+	text-decoration: bold;
+	border: 0;
+	height: 20px;
+	width: 120px;
+}
+
+#footer a:hover {
+	background:  #CCCCCC;
+	color: #2C2E22;
+}
+
+#debug {
+	position: absolute;
+	display: none;
+	z-index: 1;
+	top: 70px;
+	left: 50px;
+	height: 400px;
+	width: 380px;
+	background: #000000;
+	border: 3px solid #ffffff;
+	filter: alpha(opacity=80);
+}

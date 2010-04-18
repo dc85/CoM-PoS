@@ -1,0 +1,68 @@
+/* tables */
+html * {
+	font-family: Arial, Verdana, Tahoma, Helvetica;
+	font-size: 8pt;
+}
+
+table.tablesorter {
+	font-family:arial;
+	background-color: #CDCDCD;
+	margin:10px 0pt 15px;
+	font-size: 8pt;
+	width: 100%;
+	text-align: left;
+}
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+	background-color: #e6EEEE;
+	border: 1px solid #FFF;
+	font-size: 8pt;
+	padding: 4px;
+}
+table.tablesorter thead tr .header {
+	background-image: url(bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+table.tablesorter tbody td {
+	color: #3D3D3D;
+	padding: 3px;
+	background-color: #FFF;
+	vertical-align: top;
+}
+table.tablesorter tbody tr.odd td {
+	background-color:#F0F0F6;
+}
+table.tablesorter thead tr .headerSortUp {
+	background-image: url(asc.gif);
+}
+table.tablesorter thead tr .headerSortDown {
+	background-image: url(desc.gif);
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+	background-color: #8dbdd8;
+}
+table.tablesorter tbody tr, table.tablesorter thead tr {
+	cursor: hand;
+	cursor: pointer;
+}
+
+table.tablesorter .inactive td {background-color:#FFCC00;}
+table.tablesorter .tsLeft td {background-color:#FFFFFF;}
+table.tablesorter .tsWork td {background-color:#99FF99;}
+table.tablesorter .tsOut td {background-color:#FFCC33;}
+
+
+
+table.tablesorter .over td {background-color:#FFFF99;}
+table.tablesorter .overinvc td {background-color:#99FF66;}
+table.tablesorter .overcart td {background-color:#FF9966;}
+table.tablesorter .clicked td {
+	background-color:#666666;
+  	color:#FFFFFF; }
+table.tablesorter .removed td {
+	background-color:#FF0000;
+  	color:#FFFFFF; }
+table.tablesorter .unclicked td {
+  	background-color:#000000;
+  	color:#FFFFFF; }

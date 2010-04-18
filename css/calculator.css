@@ -1,0 +1,153 @@
+@CHARSET "ISO-8859-1";
+
+html,body,form {
+	margin: 0;
+	padding: 0;
+	height: 600px;
+	width: 600px;
+}
+
+html * {
+  font-family: Arial, Verdana, Tahoma, Helvetica;
+  font-size: 8pt;
+}
+
+/* Page */
+h1{
+	text-align:left;
+	color:#6FA5FD;
+	font-size:22px;
+	font-weight:700;
+	border-bottom:1px dotted #D3D3D3;
+	padding-bottom:2px;
+	margin-bottom:20px;
+}
+#sidemenu {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 600px;
+	width: 50px;
+	background: #660000; 
+}
+
+#logo {
+	position: absolute;
+	bottom: 25px;
+	left: 5px;
+	height: 185px;
+	width: 35px;
+	background: #660000;
+	z-index: 5;
+}
+
+/* Main area page */
+#main {
+	position: relative;
+	top: 0px;
+	left: 50px;
+	height: 574px;
+	width: 550px;
+}
+
+#wallpaper {
+	position: absolute;
+	padding: 3px;
+	top: 0px;
+	left: 0px;
+	height: 574px;
+	width: 275px;
+	border: 2px solid grey;
+}
+
+#paint {
+	position: absolute;
+	padding: 3px;
+	top: 0px;
+	left: 275px;
+	height: 574px;
+	width: 275px;
+	border: 2px solid grey;
+}
+
+/* Footer */
+#footer {
+	position: absolute;
+	top: 574px;
+	left: 50px;
+	width: 550px;
+	height: 26px;
+	background: #cc9966;
+	z-index:10;
+}
+
+#footer a {
+	padding-left: 3px;
+	padding-right: 3px;
+	border: 1px solid grey;
+	font-size: 10pt;
+	text-decoration: none;
+	display: block;
+	height: 20px;
+	width: 68px;
+	cursor: hand;
+	cursor: pointer;
+}
+
+#footer a:link {
+	color: #000000;
+}
+
+#footer a:visited {
+	color: #2C2E22;
+}
+
+#footer a:hover {
+	background:  #F3F3F3;
+	color: #2C2E22;
+}
+
+#footer a:active {
+	color: #2C2E22;
+}
+
+/* Footer menu */
+
+#footermenu {
+	display: none;
+	position: absolute;
+	bottom: 20px;
+	height: 160px;
+	width: 120px;
+	background: #ffffff;
+	border: 1px solid black;
+}
+
+
+#footermenu a {
+	padding-left: 3px;
+	padding-right: 3px;
+	font-size: 10pt;
+	text-decoration: none;
+	border: 0;
+	height: 20px;
+	width: 120px;
+	cursor: hand;
+	cursor: pointer;
+}
+
+#footermenu h3 {
+	padding-left: 3px;
+	padding-right: 3px;
+	font-size: 10pt;
+	background: #cc9966;
+	text-decoration: bold;
+	border: 0;
+	height: 20px;
+	width: 120px;
+}
+
+#footer a:hover {
+	background:  #CCCCCC;
+	color: #2C2E22;
+}

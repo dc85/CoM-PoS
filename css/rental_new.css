@@ -1,0 +1,255 @@
+@CHARSET "ISO-8859-1";
+
+html,body,form {
+	margin: 0;
+	padding: 0;
+	height: 600px;
+	width: 600px;
+}
+
+html * {
+  font-family: Arial, Verdana, Tahoma, Helvetica;
+  font-size: 8pt;
+}
+
+
+#hiddenframe {
+	position: absolute;
+	display: none;
+	top: 0px;
+	right: 0px;
+	height: 200px;
+	width: 200px;
+	background: #ffffff;
+	z-index: 15;
+}
+
+/* Page */
+h1{
+	text-align:left;
+	color:#6FA5FD;
+	font-size:22px;
+	font-weight:700;
+	border-bottom:1px dotted #D3D3D3;
+	padding-bottom:2px;
+	margin-bottom:20px;
+}
+#sidemenu {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 600px;
+	width: 50px;
+	background: #660000; 
+}
+
+#logo {
+	position: absolute;
+	bottom: 25px;
+	left: 5px;
+	height: 185px;
+	width: 35px;
+	background: #660000;
+	z-index: 5;
+}
+
+/* Main area page */
+#main {
+	position: relative;
+	top: 0px;
+	left: 50px;
+	height: 574px;
+	width: 550px;
+}
+
+th {
+	text-align: left;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.suggestionsBox {
+	position: absolute;
+	text-align: center;
+	top: 120px;
+	left: 135px;
+	margin: 0px 0px 0px 0px;
+	width: 175px;
+	background-color: #212427;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 7px;
+	border: 2px solid #000;	
+	color: #fff;
+	z-index: 3;
+	filter:alpha(opacity=80);
+}
+
+#suggestionList {
+	margin: 0px;
+	padding: 0px;
+}
+
+.suggestionList a {
+	margin: 0px 0px 0px 0px;
+	padding: 3px;
+	cursor: pointer;
+}
+
+.suggestionList a:hover {
+	background-color: #659CD8;
+}
+
+th.autocomplete {
+	font-size: 10pt;
+	font-family: "Times New Roman";
+	text-align: center;
+	padding-top: 0px;
+	padding-bottom: 2px;
+	width: 175px;
+	color: white;
+	border-bottom:1px dotted #000000;
+	cursor: hand;
+}
+
+th a:hover {
+	background-color: #659CD8;	
+}
+
+th.title {
+	font-size: 12pt;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	border-bottom:1px dotted #000000;
+}
+
+th.normal {
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+
+#wallpaper {
+	position: absolute;
+	padding: 3px;
+	top: 0px;
+	left: 0px;
+	height: 574px;
+	width: 275px;
+	border: 2px solid grey;
+}
+
+#paint {
+	position: absolute;
+	padding: 3px;
+	top: 0px;
+	left: 275px;
+	height: 574px;
+	width: 275px;
+	border: 2px solid grey;
+}
+
+/* Footer */
+#footer {
+	position: absolute;
+	top: 574px;
+	left: 50px;
+	width: 550px;
+	height: 26px;
+	background: #cc9966;
+	z-index:10;
+}
+
+#footer a {
+	padding-left: 3px;
+	padding-right: 3px;
+	border: 1px solid grey;
+	font-size: 10pt;
+	text-decoration: none;
+	display: block;
+	height: 20px;
+	width: 68px;
+	cursor: hand;
+	cursor: pointer;
+}
+
+#footer a:link {
+	color: #000000;
+}
+
+#footer a:visited {
+	color: #2C2E22;
+}
+
+#footer a:hover {
+	background:  #F3F3F3;
+	color: #2C2E22;
+}
+
+#footer a:active {
+	color: #2C2E22;
+}
+
+/* Footer menu */
+
+#footermenu {
+	display: none;
+	position: absolute;
+	bottom: 20px;
+	height: 160px;
+	width: 120px;
+	background: #ffffff;
+	border: 1px solid black;
+}
+
+
+#footermenu a {
+	padding-left: 3px;
+	padding-right: 3px;
+	font-size: 10pt;
+	text-decoration: none;
+	border: 0;
+	height: 20px;
+	width: 120px;
+	cursor: hand;
+	cursor: pointer;
+}
+
+#footermenu h3 {
+	padding-left: 3px;
+	padding-right: 3px;
+	font-size: 10pt;
+	background: #cc9966;
+	text-decoration: bold;
+	border: 0;
+	height: 20px;
+	width: 120px;
+}
+
+#footer a:hover {
+	background:  #CCCCCC;
+	color: #2C2E22;
+}
+
+/* located in demo.css and creates a little calendar icon
+ * instead of a text link for "Choose date"
+ */
+a.dp-choose-date {
+
+	width: 16px;
+	height: 16px;
+	padding: 0;
+	margin: 5px 3px 0;
+	
+	text-indent: -2000px;
+	overflow: hidden;
+	background: url(../images/calendar.png) no-repeat; 
+}
+a.dp-choose-date.dp-disabled {
+	background-position: 0 -20px;
+	cursor: default;
+}
+/* makes the input field shorter once the date picker code
+ * has run (to allow space for the calendar icon
+ */
+input.dp-applied {
+	width: 140px;
+}

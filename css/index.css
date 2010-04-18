@@ -1,0 +1,24 @@
+@CHARSET "ISO-8859-1";
+
+/* set a decent font with fallback options */
+
+html,body,form {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+}
+
+html * {
+  font-family: Arial, Verdana, Tahoma, Helvetica;
+  font-size: 8pt;
+}
+
+/* Page */
+#area {
+	top: 0%;
+	left: 0%;
+	height: 100%;
+	width: 100%;
+	/*border: 1px solid black;*/
+}

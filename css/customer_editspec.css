@@ -1,0 +1,79 @@
+@CHARSET "ISO-8859-1";
+
+html * {
+	font-family:  Arial, Verdana, Tahoma, Helvetica;
+	font-size: 9pt;
+}
+
+/* this is the secret to */
+/* controlling form height */
+
+html,body,form {
+	color: #fff;
+	margin:0;
+	padding:0;
+	height:100%;
+	width:100%;
+	background: #666;
+}
+
+h3.info {
+	color:#6FA5FD;
+	border-bottom:1px dotted #D3D3D3;
+	padding:0;
+	margin:0;
+}
+
+#spec_info {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 80px;
+	width: 1400px;
+	/*border: 1px solid red;*/
+}
+
+#spec_prime_contact {
+	position: absolute;
+	top: 80px;
+	left: 0px;
+	height: 210px;
+	width: 350px;
+	/*border: 1px solid red;*/
+}
+
+#spec_second_contact {
+	position: absolute;
+	top: 80px;
+	left: 350px;
+	height: 210px;
+	width: 350px;
+	/*border: 1px solid red;*/
+}
+
+#spec_backup_contact {
+	position: absolute;
+	top: 80px;
+	left: 700px;
+	height: 210px;
+	width: 350px;
+	/*border: 1px solid red;*/
+}
+
+#spec_additional_contact {
+	position: absolute;
+	top: 80px;
+	left: 1050px;
+	height: 210px;
+	width: 350px;
+	/*border: 1px solid red;*/
+}
+
+#spec_finance_info {
+	position: absolute;
+	top: 290px;
+	left: 0px;
+	height: 75px;
+	width: 1230px;
+	/*border: 1px solid red;*/
+}
