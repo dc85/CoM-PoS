@@ -760,6 +760,11 @@ if($_SESSION['exp_user']['usrlevel'] == "1") {
 			onclick="JavaScript:showAddCustomerPopup();"
 			title="Add a new customer"><img src="../images/menu_addcustomer.png"
 			border=0></img> Add Customer</a></td>
+		<td><a style="border: 0; padding-top: 1px; width: 126px;"
+			class="footeritem" href="#"
+			onclick="printPriceList();"
+			title="Print Customer Price List"><img src="../images/menu_addcustomer.png"
+			border=0></img> Price List</a></td>
 	</tr>
 </table>
 </div>

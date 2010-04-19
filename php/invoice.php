@@ -253,6 +253,10 @@ print make_formdropdown_list("Server","invServer","",$reps,"Server that served t
 			class="footeritem" href="#" onClick="showPaymentPopup();"
 			title="Checkout all items and open up the payment window"><img
 			src="../images/menu_checkout.png" border=0></img>Checkout</a></td>
+		<td><a style="border: 0; padding-top: 1px; width: 76px;"
+			class="footeritem" href="#" onClick="showQuote();"
+			title="Create Quote invoice"><img
+			src="../images/menu_calculator.png" border=0></img>Quote</a></td>
 	</tr>
 </table>
 </div>

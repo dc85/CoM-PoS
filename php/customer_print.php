@@ -8,6 +8,7 @@ include("../backend/customer.php");
 
 <link href="../jquery.tablesorter/themes/blue/style.css" rel="stylesheet" type="text/css" />
 <script src="../js/jquery.js" type="text/javascript"></script>
+<script src="../js/jquery.impromptu.js" type="text/javascript"></script>
 <script src="../js/customer.js" type="text/javascript"></script>
 <script src="../jquery.tablesorter/jquery.tablesorter.js" type="text/javascript"></script>
 <script language="javascript" type="text/javascript">

@@ -4,13 +4,14 @@ include("../backend/invoice.php");
 
 class PDF extends FPDF
 {
+	
 	var $daysInMonth = array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
 	var $colwidth = array(30,90,30,10,30);
 	var $colwidthb = array(130,35,25);
 	var $colwidthc = array(70,60,60);
 	var $col=0;
 	
-	var $connection,$header,$result,$data,$cID,$sID,$coName,$tItem,$tPrice,$arAmt,$cSize,$gTotal,$cFName,$cLName,$session,$date,$date1,$server,$paybyString,$mpay,$payPo;
+	var $connection,$header,$result,$data,$cID,$sID,$coName,$tItem,$tPrice,$arAmt,$cSize,$gTotal,$cFName,$cLName,$session,$date,$date1,$server,$paybyString,$mpay,$payPo,$quote;
 	var $EF = 0.00;
 	var $GST = 0.00;
 	var $PST = 0.00;
@@ -31,6 +32,7 @@ class PDF extends FPDF
 
 	function get_parameters($base) {
 		return array(
+			$this->fetch_value_if_exists($base,'quote'),
 			$this->fetch_value_if_exists($base,'inSID'),
 			$this->fetch_value_if_exists($base,'inCID'),
 			$this->fetch_value_if_exists($base,'inFName'),
@@ -68,7 +70,7 @@ class PDF extends FPDF
 		}
 	 */
 	function buildQuery() {
-		list($this->sID,$this->cID,$this->cFName,$this->cLName,$this->session,
+		list($this->quote,$this->sID,$this->cID,$this->cFName,$this->cLName,$this->session,
 			$this->server,$cdate,$this->coName,$csize,$this->arAmt,$this->mpay,
 			$this->poStr,$this->paybyString) = $this->get_parameters($_GET);
 		//print $cID . "/" . $fname . "/" . $lname . "/" . $ses . "/" . $ser;
@@ -162,7 +164,7 @@ class PDF extends FPDF
 		$newx = $ix;
 		$iy = $this->GetY();
 		$newy = $iy;
-		if($this->connection) {
+		if($this->connection && ($this->quote != "true")) {
 			$sql = "SELECT tblStore.sUnit AS unit,".
 			"tblStore.sAddress1 AS address,".
 			"tblStore.sCity AS city,".
@@ -187,60 +189,61 @@ class PDF extends FPDF
 				//print_r($item);
 				$result['loc'] = $item;
 			}
+			    $ary = array($result['loc']['addr'],$result['loc']['city'],$result['loc']['url']);
+			    $ary2 = array('INVOICE TO',"$this->cFName, $this->cLName",$this->coName);
+			    $ary3 = array("INVOICE # $this->session",$this->date,"Staff - $this->server");
+			   	$this->SetTextColor(0);
+			    foreach($ary as $cel) {
+			    	if($cel == 'Invoice to' || substr($cel,0,9) == 'Invoice #') {
+			    		$this->SetFont('Arial','B',12);
+			    		$this->SetXY($newx,$newy);
+				    	$this->MultiCell(70,6,$cel,0,'C',false);
+				    	$newy += 6;
+			    	} else {
+			    		$this->SetFont('Arial','',12);
+				    	$this->SetXY($newx,$newy);
+				    	$this->MultiCell(70,6,$cel,0,'C',false);
+				    	$newy += 6;
+			    	}
+			    }
+			    $newy = $iy;
+			    $newx += 70;
+			    foreach($ary2 as $cel) {
+			    	if($cel == 'INVOICE TO' || substr($cel,0,9) == 'INVOICE #') {
+			    		$this->SetFont('Arial','B',12);
+			    		$this->SetXY($newx,$newy);
+				    	$this->MultiCell(55,6,$cel,0,'C',false);
+				    	$newy += 6;
+			    	} else {
+			    		$this->SetFont('Arial','',12);
+				    	$this->SetXY($newx,$newy);
+				    	$this->MultiCell(55,6,$cel,0,'C',false);
+				    	$newy += 6;
+			    	}
+			    }
+			    $newy = $iy;
+			    $newx += 55;
+			    foreach($ary3 as $cel) {
+			    	if($cel == 'Invoice to' || substr($cel,0,9) == 'Invoice #') {
+			    		$this->SetFont('Arial','B',12);
+			    		$this->SetXY($newx,$newy);
+				    	$this->MultiCell(70,6,$cel,0,'C',false);
+				    	$newy += 6;
+			    	} else {
+			    		$this->SetFont('Arial','',12);
+				    	$this->SetXY($newx,$newy);
+				    	$this->MultiCell(70,6,$cel,0,'C',false);
+				    	$newy += 6;
+			    	}
+			    }
 		}
-	    $ary = array($result['loc']['addr'],$result['loc']['city'],$result['loc']['url']);
-	    $ary2 = array('INVOICE TO',"$this->cFName, $this->cLName",$this->coName);
-	    $ary3 = array("INVOICE # $this->session",$this->date,"Staff - $this->server");
-	   	$this->SetTextColor(0);
-	    foreach($ary as $cel) {
-	    	if($cel == 'Invoice to' || substr($cel,0,9) == 'Invoice #') {
-	    		$this->SetFont('Arial','B',12);
-	    		$this->SetXY($newx,$newy);
-		    	$this->MultiCell(70,6,$cel,0,'C',false);
-		    	$newy += 6;
-	    	} else {
-	    		$this->SetFont('Arial','',12);
-		    	$this->SetXY($newx,$newy);
-		    	$this->MultiCell(70,6,$cel,0,'C',false);
-		    	$newy += 6;
-	    	}
-	    }
-	    $newy = $iy;
-	    $newx += 70;
-	    foreach($ary2 as $cel) {
-	    	if($cel == 'INVOICE TO' || substr($cel,0,9) == 'INVOICE #') {
-	    		$this->SetFont('Arial','B',12);
-	    		$this->SetXY($newx,$newy);
-		    	$this->MultiCell(55,6,$cel,0,'C',false);
-		    	$newy += 6;
-	    	} else {
-	    		$this->SetFont('Arial','',12);
-		    	$this->SetXY($newx,$newy);
-		    	$this->MultiCell(55,6,$cel,0,'C',false);
-		    	$newy += 6;
-	    	}
-	    }
-	    $newy = $iy;
-	    $newx += 55;
-	    foreach($ary3 as $cel) {
-	    	if($cel == 'Invoice to' || substr($cel,0,9) == 'Invoice #') {
-	    		$this->SetFont('Arial','B',12);
-	    		$this->SetXY($newx,$newy);
-		    	$this->MultiCell(70,6,$cel,0,'C',false);
-		    	$newy += 6;
-	    	} else {
-	    		$this->SetFont('Arial','',12);
-		    	$this->SetXY($newx,$newy);
-		    	$this->MultiCell(70,6,$cel,0,'C',false);
-		    	$newy += 6;
-	    	}
-	    }
+
 	    $newy = $iy;
 	    $newx += 50;
 		    //$newx = $newx + $colwidthc[$i];
 	    $x = $this->GetX();
 		$y = $this->GetY();
-	    $this->SetXY($x,$y);
+	    $this->SetXY(175,$y);
 	    $this->SetFont('Arial','',8);
 	    $this->SetTextColor(0);
 	    $this->Cell(70,6,'P:'.$result['loc']['phone'].' - F:'.$result['loc']['fax'],0,1,'C',false);

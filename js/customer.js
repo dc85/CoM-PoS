@@ -95,6 +95,34 @@ function showAddCustomerPopup(){
 	}
 }
 
+function printPriceList() {
+	var selSID = document.getElementById('selSID').value;
+	var selCID = document.getElementById('selCID').value;
+	if(selSID == "-1" || selCID == "-1") {
+		alert("Please select customer to see outstanding invoices");
+		return;	
+	}
+
+	var custID = document.getElementById('selCID').value;
+	var sID = document.getElementById('selSID').value;
+	var cFirstN = document.getElementById('cFirstN').value;
+	var cLastN = document.getElementById('cLastN').value;
+	var coName = document.getElementById('cCoName').value;
+	var spc = document.getElementById('cSPC').selectedIndex;
+	//alert(pbStr);
+	var url = "../script/print_priceList.php?"
+		+ "inCID=" + custID 
+		+ "&inSID=" + sID 
+		+ "&coName=" + coName 
+		+ "&inFName=" + cFirstN 
+		+ "&inLName=" + cLastN
+		+ "&spc=" + spc;
+	// alert(url);
+	window.open(url, "_blank", "height=595px,width=842px");
+	//var fun = "updatePayTables('"+session+"')";
+	//setTimeout(fun, 500);
+}
+
 function disableAddCustomerPopup(){
 	//disables popup only if it is enabled
 	if(addCustomerWindowOpen = 1){
@@ -818,7 +846,7 @@ function choose_cust(obj) {
 			for(var i = 0; i < (titles.length); i++) {
 				var ele = parent.document.getElementById(titles[i]);
 				if(ele == null) {
-					alert(titles[i]);
+					//alert(titles[i]);
 				}
 				if(list[i] == "") {
 					if (titles[i] == "pPromo") {
@@ -918,152 +946,6 @@ function choose_cust(obj) {
 	setTimeout("getARs()",500);
 }
 
-/*function choose_rcust(sid,cid) {
-	//window.prevObj = obj;
-	//parent.curCustomer = obj;
-	//alert(sid + "/"+cid);
-	editMasterArray = "";
-	var titles = new Array("cIsActive","cTitle","cFirstN","cLastN",
-			"cAKA","cDoB","cRIN","cCardNum","cCustType","cCoName",
-			"cShirtSize","cPantSize","cExpert","cpType4","cPhone4",
-			"cpType5","cPhone5","cE1","cE2","cE3","cE4","cE5","cE6",
-			"cE7","cE8","cE9","cE10","cUnitB","cAdrBus","cCityB","cProvB",
-			"cZipB","cpType1","cPhone1","cEmail1","cUnitH","cAdrHome",
-			"cCityH","cProvH","cZipH","cpType2","cPhone2","cEmail2",
-			"cUnitS","cAdrShip","cCityS","cProvS","cZipS","cpType3",
-			"cPhone3","cEmail3","cTax1","cTax2","cSPC","cEcoFee",
-			"cCustRep","cExpNum","cExpDate","cCredit","cCBal",
-			"cBalance","cNote");
-	
-	var selSID = document.getElementById('selSID');
-	var selCID = document.getElementById('selCID');
-	//var selSPC = document.getElementById('selSPC');
-	//var selFirstN = parent.document.getElementById('selFirstN');
-	//var selLastN = parent.document.getElementById('selLastN');
-	//var selCoName = parent.document.getElementById('selCoName');
-	
-	selSID.value = sid;
-	selCID.value = cid;
-	
-	var poststr = "custSID=" + sid + "&custCID=" + cid;
-	//alert(poststr);
-	
-	if(navigator.appName == "Microsoft Internet Explorer") {
-		http = new ActiveXObject("Microsoft.XMLHTTP");
-	} else {
-		http = new XMLHttpRequest();
-	}
-	http.open("GET", "../script/customer_retrieve.php?" + poststr, true);
-	http.onreadystatechange=function() {
-		if(http.readyState == 4) {
-			var str = http.responseText;
-			alert(str);
-			parent.document.getElementById("debugger").value += str;
-			var list = str.split('|');
-			//alert(list);
-			for(var i = 0; i < (titles.length); i++) {
-				var ele = parent.document.getElementById(titles[i]);
-				if(ele == null) {
-					alert(titles[i]);
-				}
-				if(list[i] == "") {
-					if (titles[i] == "pPromo") {
-						ele.value = "";;
-					} else {
-						ele.innerText = "";
-						ele.style.backgroundColor = "#FF6633";
-					}
-					if(titles[i] != "cpType1" ||
-							titles[i] != "cpType2" || titles[i] != "cpType1" ||
-							titles[i] != "cpType4" || titles[i] != "cpType5") {
-						ele.style.backgroundColor = "#FF6633";
-					}
-					if(ele.type == "text") {
-						ele.value = "";
-					} else if(ele.type == "select-one") {
-						ele.selectedIndex = 0;
-					} else if(ele.type == "checkbox") {
-						ele.checked = false;
-					} else {
-						//do nothing
-					}
-				} else {
-					ele.style.backgroundColor = "#ffffff";
-					if(titles[i] == "cIsActive") {
-						if(list[i] == "0") {
-							ele.value = "ACTIVE";
-						} else {
-							ele.value = "INACTIVE";
-						}
-					} else if(titles[i] == "cPromo") {
-						//alert(ele.type);
-					} else if(titles[i] == "cSPC") {
-						selSPC.value = list[i];
-						ele.selectedIndex = list[i];
-					} else if(titles[i] == "cLastN") {
-						selLastN.value = list[i];
-						ele.value = list[i];
-					} else if(titles[i] == "cFirstN") {
-						selFirstN.value = list[i];
-						ele.value = list[i];
-					} else if(titles[i] == "cCustRep") {
-						//alert(list[i]);
-						ele.selectedIndex = list[i];
-					} else if(titles[i] == "cEcoFee") {
-						if(list[i] == "0") {
-							ele.selectedIndex = 2;
-							ele.style.backgroundColor = "#FF6633";
-						} else {
-							ele.selectedIndex = 1;
-							ele.style.backgroundColor = "#99FF00";
-						}
-					} else if(titles[i] == "cE1" ||
-							titles[i] == "cE2" || titles[i] == "cE3" ||
-							titles[i] == "cE4" || titles[i] == "cE5" ||
-							titles[i] == "cE6" || titles[i] == "cE7" ||
-							titles[i] == "cE8" || titles[i] == "cE9" ||
-							titles[i] == "cE10") {
-						//alert(ele.type);
-						if(list[i] != "0") {
-							ele.checked = true;
-						} else {
-							ele.checked = false;
-						}
-					} else if(titles[i] == "cpType1" ||
-							titles[i] == "cpType2" || titles[i] == "cpType1" ||
-							titles[i] == "cpType4" || titles[i] == "cpType5") {
-						//alert(list[i]);
-						if(list[i] == "1") {
-							ele.src = "../images/phone_business.png";
-							ele.title = "Business Number";
-						} else if(list[i] == "2") {
-							ele.src = "../images/phone_fax.png";
-							ele.title = "Fax Number";
-						} else if(list[i] == "3") {
-							ele.src = "../images/phone_home.png";
-							ele.title = "Home Number";
-						} else if(list[i] == "4") {
-							ele.src = "../images/phone_cell.png";
-							ele.title = "Cell Number";
-						} else {
-							ele.src = "../images/phone_contact.png";
-							ele.title = "Contact Number";
-						}	
-					} else {
-						if(ele.type == "text") {
-							ele.value = list[i];
-						} else if(ele.type == "select-one") {
-							ele.selectedIndex = list[i];
-						}
-					}
-				}
-			}
-		}
-	}
-	http.send(null);
-	setTimeout("getARs()",500);
-}*/
-
 function getARs() {
 	var owning = false;
 	var owningAmt = 0;
@@ -1106,11 +988,32 @@ function getARs() {
 				owningAmt += parseFloat(list[3]);
 			}
 			if(owning) {
-				alert("Customer has outstanding balance that is 30 days or older: " + owningAmt);
+				//alert("Customer has outstanding balance that is 30 days or older: " + owningAmt);
+				parent.alertOwning(owningAmt);
 			}
 		}
 	}
 	http.send(null);
+}
+
+function alertOwning(n) {
+	/*popup = 'Enter First Amount'
+		+ '<div class="field"><label for="firstAmount">Outstanding Balance</label>'
+		+ '<p>Customer has outstanding balance that is 30 days or older: </p></div>';
+	$("body").prompt(popup, {
+		buttons : {
+			Ok : true
+		},
+		prefix : 'cleanblue'
+	});*/
+	txt = 'Outstanding Balance'
+		+ '<div class="field"><p>The customer has an outstanding balance(30 days +) of:</p><label style="font-size: 14pt; font-weight: bold; color: red;">$'+ n +'</label></div>';
+		$.prompt(txt, {
+			buttons : {
+				Ok : true
+			},
+			prefix : 'cleanblue'
+		});
 }
 
 function openCustomerInvoice() {
@@ -1209,105 +1112,6 @@ function reloadIframe(url) {
 	$("#loadingZone").fadeIn("fast");
 	window.open("../php/customer_print.php","tableFrame");
 }
-
-/* Customer page methods */
-/*var editMasterArray = "";
-
-function editCustomer() {
-	if(window.editSpecFrame.editMasterArray.length <= 0) {
-		alert("No changes has been made to the record");
-		return;
-	}
-	var selSID = document.getElementById('selSID').value;
-	var selCID = document.getElementById('selCID').value;
-	//var getstr = window.editSpecFrame.editMasterArray.substring(0,window.editSpecFrame.editMasterArray.length-1);
-	var getstr = window.editSpecFrame.editMasterArray + "ecStoreID@" + selSID + "|ecID@" + selCID; 
-	alert(getstr);
-	if(navigator.appName == "Microsoft Internet Explorer") {
-		http = new ActiveXObject("Microsoft.XMLHTTP");
-	} else {
-		http = new XMLHttpRequest();
-	}
-	http.open("GET", "../php/customer_edit.php?str=" + getstr, true);
-	http.onreadystatechange=function() {
-		if(http.readyState == 4) {
-			var str = http.responseText;
-			alert(str);
-		}
-	}
-	http.send(null);
-}
-
-function addtoEditCustArray(eleName) {
-	var ele = document.getElementById(eleName);
-	if(ele.type == "text") {
-		if(editMasterArray.indexOf(eleName) != -1) {
-			//alert("STRING EXISTS");
-			//var subs = editMasterArray.substring(editMasterArray.indexOf(eleName) + eleName.length + 1, editMasterArray.indexOf("|",editMasterArray.indexOf(eleName) + eleName.length + 1));
-			var before = editMasterArray.substring(0,editMasterArray.indexOf(eleName) + eleName.length + 1);
-			var after = editMasterArray.substring(editMasterArray.indexOf("|",editMasterArray.indexOf(eleName) + eleName.length + 1),editMasterArray.length);
-			editMasterArray = before + ele.value + after;
-		} else {
-			editMasterArray += eleName + "@" + ele.value;
-			editMasterArray += "|";
-		}
-	} else if(ele.type == "select-one") {
-		if(editMasterArray.indexOf(eleName) != -1) {
-			var before = editMasterArray.substring(0,editMasterArray.indexOf(eleName) + eleName.length + 1);
-			var after = editMasterArray.substring(editMasterArray.indexOf("|",editMasterArray.indexOf(eleName) + eleName.length + 1),editMasterArray.length);
-			editMasterArray = before + ele.selectedIndex + after;
-		} else {
-			editMasterArray += eleName + "@" + ele.selectedIndex;
-			editMasterArray += "|";
-		}
-	} else if(ele.type == "checkbox"){
-		var checkd = "";
-		if(editMasterArray.indexOf(eleName) != -1) {
-			if(ele.checked == true) {
-				checkd = "1";
-			} else {
-				checkd = "0";
-			}
-			var before = editMasterArray.substring(0,editMasterArray.indexOf(eleName) + eleName.length + 1);
-			var after = editMasterArray.substring(editMasterArray.indexOf("|",editMasterArray.indexOf(eleName) + eleName.length + 1),editMasterArray.length);
-			editMasterArray = before + checkd + after;
-		} else {
-			if(ele.checked == true) {
-				checkd = "1";
-			} else {
-				checkd = "0";
-			}
-			editMasterArray += eleName + "@" + checkd;
-			editMasterArray += "|";
-		}
-	}
-}*/
-
-/* Edit Customer */
-
-/*function editCustomerHelp() {
-	var answer = confirm("Confirm edit customer");
-	if(answer)
-		setTimeout("saveCustomer()",100);
-	else
-		return;
-}
-
-function custEditUpdate(eleName) {
-	var selSID = document.getElementById('selSID').value;
-	var selCID = document.getElementById('selCID').value;
-	if(selSID == "-1" || selCID == "-1") {
-		alert("Please select product to edit");
-		return;	
-	}
-	if(editMasterArray.indexOf(eleName) != -1) {
-		return;
-	} else {
-		editMasterArray += eleName + ",";
-	}
-	//editMasterArray += eleName + ",";
-	//alert(editMasterArray);
-}*/
 
 function saveCustomer() {
 	var selSID = document.getElementById('selSID').value;

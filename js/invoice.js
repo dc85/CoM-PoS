@@ -342,6 +342,38 @@ function confirmPayHelp() {
 	setTimeout(fun, 500);
 }
 
+function showQuote() {
+	//alert("test");
+	var arAmt = 0.00;
+	var pbStr = "";
+	var custID = document.getElementById('custID').value;
+	var sID = document.getElementById('defStoreID').value;
+	var cFirstN = document.getElementById('cFirstN').value;
+	var cLastN = document.getElementById('cLastN').value;
+	var cDate = document.getElementById('datePick').value;
+	var session = document.getElementById('session').value;
+	var coName = document.getElementById('coName').value;
+	//alert(pbStr);
+	var url = "../script/print_quote.php?"
+		+ "inCID=" + custID 
+		+ "&csize=" + document.getElementById('invCSize').value
+		+ "&prodCode=" + document.getElementById('invProdCode').value
+		+ "&inSID=" + sID 
+		+ "&arAmt=" + arAmt
+		+ "&paybyString=" + pbStr
+		+ "&mpay=" + payOpt
+		+ "&poStr=" + document.getElementById('payPO').value
+		+ "&coName=" + coName 
+		+ "&inFName=" + cFirstN 
+		+ "&inLName=" + cLastN 
+		+ "&inSession="	+ session 
+		+ "&inDate=" + (cDate.split(' '))[0];
+	// alert(url);
+	window.open(url, "_blank", "height=595px,width=842px");
+	//var fun = "updatePayTables('"+session+"')";
+	//setTimeout(fun, 500);
+}
+
 function updatePayTables(ses) {
 	var numpay = 0;
 	var actPay = 0;
@@ -413,175 +445,8 @@ function updatePayTables(ses) {
 	makePOSTRequest("../script/invoice_pay.php",url+"&numPay="+numpay+"&actPay="+actPay);
 }
 
-/*function confirmPay() {
-	var remainbox = document.getElementById('payRemain');
-	if (remainbox.value > 0) {
-		alert("Amount due not paid in full.");
-		return;
-	} else if (remainbox.value < 0) {
-		alert("Over paid.");
-		return;
-	}
-	if (paymentOptions == 1) {
-		var amount = document.getElementById('payAmount1').value;
-		var option1 = parent.document.getElementById("payMethod1").selectedIndex;
-		if (option1 == 0) {
-			alert("No pay method selected for method 1");
-			return;
-		} else {
-			if (amount.length <= 0) {
-				alert("Payment amount not specified for method 1");
-				return;
-			}
-		}
-	}
-	if (paymentOptions == 2) {
-		var amount1 = document.getElementById('payAmount1').value;
-		var option1 = parent.document.getElementById("payMethod1").selectedIndex;
-		if (option1 == 0) {
-			alert("No pay method selected for method 1");
-			return;
-		} else {
-			if (amount1.length <= 0) {
-				alert("Payment amount not specified for method 1");
-				return;
-			}
-		}
-		var amount2 = document.getElementById('payAmount2').value;
-		var option2 = parent.document.getElementById("payMethod2").selectedIndex;
-		if (option2 == 0) {
-			alert("No pay method selected for method 2");
-			return;
-		} else {
-			if (amount2.length <= 0) {
-				alert("Payment amount not specified for method 2");
-				return;
-			}
-		}
-	}
-	if (paymentOptions == 3) {
-		var amount1 = document.getElementById('payAmount1').value;
-		var option1 = parent.document.getElementById("payMethod1").selectedIndex;
-		if (option1 == 0) {
-			alert("No pay method selected for method 1");
-			return;
-		} else {
-			if (amount1.length <= 0) {
-				alert("Payment amount not specified for method 1");
-				return;
-			}
-		}
-		var amount2 = document.getElementById('payAmount2').value;
-		var option2 = parent.document.getElementById("payMethod2").selectedIndex;
-		if (option2 == 0) {
-			alert("No pay method selected for method 2");
-			return;
-		} else {
-			if (amount2.length <= 0) {
-				alert("Payment amount not specified for method 2");
-				return;
-			}
-		}
-		var amount3 = document.getElementById('payAmount3').value;
-		var option3 = parent.document.getElementById("payMethod3").selectedIndex;
-		if (option3 == 0) {
-			alert("No pay method selected for method 3");
-			return;
-		} else {
-			if (amount3.length <= 0) {
-				alert("Payment amount not specified for method 3");
-				return;
-			}
-		}
-	}
-	var custID = document.getElementById('custID').value;
-	var cFirstN = document.getElementById('cFirstN').value;
-	var cLastN = document.getElementById('cLastN').value;
-	var cDate = document.getElementById('datePick').value;
-	var sessionID = document.getElementById('sessionID');
-	// var server =
-	// document.getElementById('invServer')[document.getElementById('invServer').selectedIndex].innerHTML;
-	// var teller =
-	// document.getElementById('invTeller')[document.getElementById('invTeller').selectedIndex].innerHTML;
-	var server = document.getElementById('invServer').selectedIndex;
-	var teller = document.getElementById('invTeller').selectedIndex;
-	var url = "../script/print_invoice.php?inCID=" + custID + "&inFName="
-			+ cFirstN + "&inLName=" + cLastN + "&inSession="
-			+ sessionID.innerHTML.substring(12, sessionID.innerHTML.length - 4)
-			+ "&inServer=" + server + "&inDate=" + (cDate.split(' '))[0];
-	// alert(url);
-	window.open(url, "_blank", "height=595px,width=842px");
-	setTimeout("updatePayTables()", 1000);
-}
 
-function updatePayTables() {
-	var numpay = 0;
-	var actPay = 0;
-	var sessionID = document.getElementById('sessionID');
-	var custID = document.getElementById('custID').value;
-	var storeID = document.getElementById('defStoreID').value;
-	//var storeID = 1;
-	var total = document.getElementById('payTotal').value;
-	var server = document.getElementById('invServer').selectedIndex;
-	var teller = document.getElementById('invTeller').selectedIndex;
-	var po = document.getElementById('payPO').value;
 
-	var url = "payOp=" + paymentOptions
-			+ "&totalDue=" + total + "&inSession="
-			+ sessionID.innerHTML.substring(12, sessionID.innerHTML.length - 4)
-			+ "&inCID=" + custID + "&inSID=" + storeID + "&inServer=" + server
-			+ "&inTeller=" + teller + "&payPO=" + po;
-	// alert(url);
-	if (document.getElementById("payMethod1").selectedIndex > 0) {
-		var pm1 = document.getElementById("payMethod1").selectedIndex;
-		var pay1 = document.getElementById('payAmount1').value;
-		var note1 = document.getElementById('payNote1').value;
-		if(pm1 != 1) {
-			actPay += parseFloat(pay1);
-		}
-		var auth1 = document.getElementById('payAuth1');
-		if(auth1.value.length > 0) {
-			url += "&pm1=" + pm1 + "&note1=" + note1 + "&pay1=" + pay1 + "&auth1=" + auth1.value;
-		} else {
-			url += "&pm1=" + pm1 + "&note1=" + note1 + "&pay1=" + pay1;
-		}
-		numpay = 1;
-		// alert(url);
-	}
-	if (document.getElementById("payMethod2").selectedIndex > 0) {
-		var pm2 = document.getElementById("payMethod2").selectedIndex;
-		var pay2 = document.getElementById('payAmount2').value;
-		var note2 = document.getElementById('payNote3').value;
-		if(pm2 != 1) {
-			actPay += parseFloat(pay2);
-		}
-		var auth2 = document.getElementById('payAuth2');
-		if(auth2.value.length > 0) {
-			url += "&pm2=" + pm2 + "&note2=" + note2 + "&pay2=" + pay2 + "&auth2=" + auth2.value;
-		} else {
-			url += "&pm2=" + pm2 + "&note2=" + note2 + "&pay2=" + pay2;
-		}
-		numpay = 2;
-		// alert(url);
-	}
-	if (document.getElementById("payMethod3").selectedIndex > 0) {
-		var pm3 = document.getElementById("payMethod3").selectedIndex;
-		var pay3 = document.getElementById('payAmount3').value;
-		var note3 = document.getElementById('payNote3').value;
-		if(pm3 != 1) {
-			actPay += parseFloat(pay3);
-		}
-		var auth3 = document.getElementById('payAuth3');
-		if(auth3.value.length > 0) {
-			url += "&pm3=" + pm3 + "&note3=" + note3 + "&pay3=" + pay3 + "&auth3=" + auth3.value;
-		} else {
-			url += "&pm3=" + pm3 + "&note3=" + note3 + "&pay3=" + pay3;
-		}
-		numpay = 3;
-		// alert(url);
-	}
-	makePOSTRequest("../script/invoice_pay.php",url+"&numPay="+numpay+"&actPay="+actPay);
-}*/
 
 function getTaxNum(index) {
 	if(index == 2)
